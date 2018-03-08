@@ -12,3 +12,7 @@ El diseño de esta página fue realizada en una materia de la facultad llamada "
  - Browser-Sync
 
 [Ver página](http://www.fimac.com.ar/conaut/)
+
+### Diseño
+
+![home-min](https://user-images.githubusercontent.com/24881247/37162838-0a45711c-22d5-11e8-94c2-90b9f7c225b0.jpg)
