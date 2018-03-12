@@ -31,7 +31,8 @@ class Lamina extends JPanel{
 
 	public Lamina(){
 		setLayout(null);
-
+		Integer dato = 8;
+		System.out.println(dato.getClass().getSimpleName());
 		//agrego la pantalla superior
 		lcd = new JTextField();
 		lcd.setBounds(0,0,400,60);
