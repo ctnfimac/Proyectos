@@ -2,4 +2,4 @@
 Conaut/scss
 Conaut/node_modules
 Conaut/.sass-cache
-*.class
+Calculadora/add/*.class
