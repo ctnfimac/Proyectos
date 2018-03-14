@@ -1,4 +1,6 @@
-class Calculo{
+package Matematica.Calculo;
+
+public class Calculo{
 
 	public Double getSuma(String valor1 , String valor2){
 		Double aux1 = Double.parseDouble(valor1);

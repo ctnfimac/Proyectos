@@ -7,18 +7,12 @@
 import java.util.Scanner;
 import javax.swing.*;
 
+import Interfaz.Calculadora.Calculadora;
+
 class Aplicacion{
 
 	public static void main(String[] args){
-		Marco marco = new Marco();
-		marco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	}
-
-	public static void print(String s){
-		System.out.print(s);
-	}
-
-	public static void println(String s){
-		System.out.println(s);
+		Calculadora calculadora = new Calculadora();
+		calculadora.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }
