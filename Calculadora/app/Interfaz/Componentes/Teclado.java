@@ -1,8 +1,10 @@
 package Interfaz.Componentes;
 
 import Interfaz.Componentes.Pantalla;
+import Matematica.Calculo.Calculo;
 import javax.swing.*;
 import java.awt.event.*;
+import java.awt.*;
 
 public class Teclado extends JPanel{
 	private static int N_FILA = 5;
@@ -14,9 +16,12 @@ public class Teclado extends JPanel{
 	private String[] nombresFila3= {"1","2","3","+",   "-"};
 	private String[] nombresFila4= {"0",".","sqrt","^","="};
 
+
 	private Pantalla pantallaSuperior;
 	private Pantalla pantallaInferior;
 	
+	private Calculo calculo;
+
 	public Teclado(Pantalla pantallaSuperior, Pantalla pantallaInferior){
 		setLayout(null);
 		setSize(400,420);
@@ -27,6 +32,8 @@ public class Teclado extends JPanel{
 
 		this.pantallaSuperior = pantallaSuperior;
 		this.pantallaInferior = pantallaInferior;
+
+		calculo = new Calculo();
 	}
 
 	private void agregarFilaDeBotones( String[] teclas, int posY){
@@ -47,27 +54,45 @@ public class Teclado extends JPanel{
 		add(fila);
 	}
 
-	public void controlDelTeclado(String teclaPresionada ){
-		if(teclaPresionada.equals("=")){
+	private void controlDelTeclado(String teclaPresionada ){
+		if(teclaPresionada.equals("="))		   this.controlIgual();
+		else if(teclaPresionada.equals("AC"))  this.controlAC();
+		else if(teclaPresionada.equals("DEL")) this.controlDEL();
+		else if(teclaPresionada.equals("+"))   this.controlSuma();
+		else  pantallaSuperior.setPantalla(teclaPresionada);
 		
+	}
+
+	private void controlIgual(){
+		    calculo.guardarValor(pantallaSuperior.getPantalla());
 			pantallaInferior.clearPantalla();
-			if(pantallaSuperior.getPantalla().equals("") == false )
-					pantallaInferior.setPantalla(pantallaSuperior.getPantalla());
+
+			if(pantallaSuperior.getPantalla().equals("") != true ) pantallaInferior.setPantalla(calculo.getBuffer());
 			else pantallaInferior.setPantalla("0");
+
 			pantallaSuperior.clearPantalla();
-		
-		}else if(teclaPresionada.equals("AC")){
-		
+			calculo.tipoDeOperacion(calculo.RESET);
+	}
+
+	private void controlAC(){
+			calculo.tipoDeOperacion(calculo.RESET);
+			calculo.guardarValor("0");
 			pantallaSuperior.clearPantalla();
-			//pantallaSuperior.clearBuffer();
 			pantallaInferior.clearPantalla();
 			pantallaInferior.setPantalla("0");
-		
-		}else if(teclaPresionada.equals("DEL")){
+	}
+
+	private void controlDEL(){
 			pantallaSuperior.eliminaCaracter();
-		}else{
-				pantallaSuperior.setPantalla(teclaPresionada);
-		}
+	}
+
+	private void controlSuma(){
+			calculo.tipoDeOperacion(calculo.SUMA);
+			System.out.println("valor: " + pantallaSuperior.getPantalla());
+			calculo.guardarValor(pantallaSuperior.getPantalla());
+			pantallaSuperior.clearPantalla();
+			pantallaInferior.clearPantalla();
+			pantallaInferior.setPantalla(calculo.getBuffer());
 	}
 
 	private class EventKey implements ActionListener{

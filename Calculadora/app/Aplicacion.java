@@ -8,7 +8,9 @@ import java.util.Scanner;
 import javax.swing.*;
 
 import Interfaz.Calculadora.Calculadora;
-
+import Interfaz.Componentes.Pantalla;
+import Matematica.Calculo.Calculo;
+import Interfaz.Componentes.Teclado;
 class Aplicacion{
 
 	public static void main(String[] args){

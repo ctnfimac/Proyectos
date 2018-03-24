@@ -9,7 +9,7 @@ import Interfaz.Componentes.Teclado;
 public class Calculadora extends JFrame{
 	
 	public Calculadora(){
-		setTitle("Calculadora");
+		setTitle("Calculadora2");
 		setBounds(800,200,405,450);
 		setResizable(false);
 		LaminaCalculadora laminaCalculadora = new LaminaCalculadora();
@@ -17,6 +17,7 @@ public class Calculadora extends JFrame{
 		setVisible(true);
 	}
 }
+
 
 class LaminaCalculadora extends JPanel{	
 	Pantalla pantallaSuperior;
