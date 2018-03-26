@@ -61,6 +61,7 @@ public class Teclado extends JPanel{
 		else if(teclaPresionada.equals("+"))   this.controlSuma();
 		else if(teclaPresionada.equals("-"))   this.controlResta();
 		else if(teclaPresionada.equals("X"))   this.controlMultiplicacion();
+		else if(teclaPresionada.equals("/"))   this.controlDivision();
 		else  pantallaSuperior.setPantalla(teclaPresionada);
 		
 	}
@@ -106,6 +107,14 @@ public class Teclado extends JPanel{
 
 	private void controlMultiplicacion(){
 			calculo.tipoDeOperacion(calculo.MULTIPLICACION);
+			calculo.guardarValor(pantallaSuperior.getPantalla());
+			pantallaSuperior.clearPantalla();
+			pantallaInferior.clearPantalla();
+			pantallaInferior.setPantalla(calculo.getBuffer());
+	}
+
+	private void controlDivision(){
+			calculo.tipoDeOperacion(calculo.DIVISION);
 			calculo.guardarValor(pantallaSuperior.getPantalla());
 			pantallaSuperior.clearPantalla();
 			pantallaInferior.clearPantalla();

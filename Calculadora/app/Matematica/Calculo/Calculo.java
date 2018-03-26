@@ -7,16 +7,17 @@ public class Calculo{
 	public final int SUMA  = 1;
 	public final int RESTA = 2;
 	public final int MULTIPLICACION = 3;
-	private List lista;
+	public final int DIVISION = 4;
+	//private List lista;
 	private Integer operacion;
 	private String buffer = "0";
-	private String[] vector;
 
 	private boolean primerResta = true;
 	private boolean primerMultiplicacion = true;
+	private boolean primerDivision = true;
 
 	public Calculo(){
-		lista = new List();
+		//lista = new List();
 		operacion = RESET;
 	} 
 
@@ -30,6 +31,7 @@ public class Calculo{
 				buffer = valor;
 				primerResta = true;
 				primerMultiplicacion = true;
+				primerDivision = true;
 				break;
 			case SUMA:
 			    if(valor.equals("") == true) valor = "0";
@@ -42,6 +44,10 @@ public class Calculo{
 			case MULTIPLICACION:
 				if(valor.equals("") == true) valor = "1";
 				buffer = getMultiplicacion(buffer , valor);
+				break;
+			case DIVISION:
+				if(valor.equals("") == true) valor = "0";
+				buffer = getDivision(buffer , valor);
 				break;
 			default: 
 				break;
@@ -87,13 +93,23 @@ public class Calculo{
 		return aux3;
 	}
 
-	public Double getDivision(String valor1 , String valor2){
+	public String getDivision(String valor1, String divisor){
 		Double aux1 = Double.parseDouble(valor1);
-		Double aux2 = Double.parseDouble(valor2);
+		Double auxDivisor = Double.parseDouble(divisor);
 
-		return aux1 / aux2;
+		if(this.primerDivision == true){
+			aux1 = auxDivisor * auxDivisor;
+			this.primerDivision = false;
+		}	
+		
+		if(auxDivisor == 0) auxDivisor = 1.0;
+
+		Double multiplicacion = aux1 / auxDivisor;
+		String resultado = String.valueOf(multiplicacion);
+		return resultado;
 	}
 
+	/*
 	public Double getPotencia(String base , String exponente){
 		Double aux1 = Double.parseDouble(base);
 		Integer aux2 = Integer.valueOf(exponente);
@@ -102,12 +118,12 @@ public class Calculo{
 	}
 
 
-	public Double getRaiz(String base , String raiz){
+	/*public Double getRaiz(String base , String raiz){
 		Double aux1 = Double.parseDouble(base);
 		Double aux2 = Double.parseDouble(raiz);
 
 		return  Math.pow(aux1, 1/aux2);
-	}
+	}*/
 
 }
 
