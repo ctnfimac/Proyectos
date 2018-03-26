@@ -59,6 +59,8 @@ public class Teclado extends JPanel{
 		else if(teclaPresionada.equals("AC"))  this.controlAC();
 		else if(teclaPresionada.equals("DEL")) this.controlDEL();
 		else if(teclaPresionada.equals("+"))   this.controlSuma();
+		else if(teclaPresionada.equals("-"))   this.controlResta();
+		else if(teclaPresionada.equals("X"))   this.controlMultiplicacion();
 		else  pantallaSuperior.setPantalla(teclaPresionada);
 		
 	}
@@ -88,7 +90,22 @@ public class Teclado extends JPanel{
 
 	private void controlSuma(){
 			calculo.tipoDeOperacion(calculo.SUMA);
-			System.out.println("valor: " + pantallaSuperior.getPantalla());
+			calculo.guardarValor(pantallaSuperior.getPantalla());
+			pantallaSuperior.clearPantalla();
+			pantallaInferior.clearPantalla();
+			pantallaInferior.setPantalla(calculo.getBuffer());
+	}
+
+	private void controlResta(){
+			calculo.tipoDeOperacion(calculo.RESTA);
+			calculo.guardarValor(pantallaSuperior.getPantalla());
+			pantallaSuperior.clearPantalla();
+			pantallaInferior.clearPantalla();
+			pantallaInferior.setPantalla(calculo.getBuffer());
+	}
+
+	private void controlMultiplicacion(){
+			calculo.tipoDeOperacion(calculo.MULTIPLICACION);
 			calculo.guardarValor(pantallaSuperior.getPantalla());
 			pantallaSuperior.clearPantalla();
 			pantallaInferior.clearPantalla();

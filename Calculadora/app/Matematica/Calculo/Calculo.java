@@ -4,11 +4,16 @@ import java.awt.List;
 
 public class Calculo{
 	public final int RESET = 0;
-	public final int SUMA = 1;
+	public final int SUMA  = 1;
+	public final int RESTA = 2;
+	public final int MULTIPLICACION = 3;
 	private List lista;
 	private Integer operacion;
 	private String buffer = "0";
 	private String[] vector;
+
+	private boolean primerResta = true;
+	private boolean primerMultiplicacion = true;
 
 	public Calculo(){
 		lista = new List();
@@ -17,29 +22,31 @@ public class Calculo{
 
 	public void tipoDeOperacion(int operacion){
 		this.operacion = operacion;
-		//System.out.println("tipoDeOperacion6");
 	}
 
 	public void guardarValor(String valor){
-		//lista.add(valor);
-		//System.out.println("valor guardado : " + lista.getItem(0));	
 		switch(this.operacion){
 			case RESET:
 				buffer = valor;
+				primerResta = true;
+				primerMultiplicacion = true;
 				break;
 			case SUMA:
-				if(valor.equals("") == true) valor = "0";
+			    if(valor.equals("") == true) valor = "0";
 				buffer = getSuma(buffer , valor);
+				break;
+			case RESTA:
+			    if(valor.equals("") == true) valor = "0";
+				buffer = getResta(buffer , valor);
+				break;
+			case MULTIPLICACION:
+				if(valor.equals("") == true) valor = "1";
+				buffer = getMultiplicacion(buffer , valor);
 				break;
 			default: 
 				break;
 		}
 		
-	}
-
-	public String realizarOperacion(){
-		String resultado = "";
-		return resultado;
 	}
 
 
@@ -48,7 +55,6 @@ public class Calculo{
 	}
 
 	public String getSuma(String valor1 , String valor2){
-		if(valor2 == "") valor2 = "0";
 		Double aux1 = Double.parseDouble(valor1);
 		Double aux2 = Double.parseDouble(valor2);
 		Double suma = aux1 + aux2;
@@ -56,18 +62,29 @@ public class Calculo{
 		return aux3;
 	}
 
-	public Double getResta(String valor1 , String valor2){
+	public String getResta(String valor1 , String valor2){
 		Double aux1 = Double.parseDouble(valor1);
 		Double aux2 = Double.parseDouble(valor2);
-
-		return aux1 - aux2;
+		if(this.primerResta == true && aux2 > 0){
+			aux2 = 0 - aux2;
+			this.primerResta = false;
+		}
+		Double resta = aux1 - aux2;
+		String aux3 = String.valueOf(resta);
+		return aux3;
 	}
 
-	public Double getMultiplicacion(String valor1 , String valor2){
+	public String getMultiplicacion(String valor1 , String valor2){
+		if(this.primerMultiplicacion == true){
+			valor1 = "1";
+			this.primerMultiplicacion = false;
+		}	
 		Double aux1 = Double.parseDouble(valor1);
 		Double aux2 = Double.parseDouble(valor2);
-
-		return aux1 * aux2;
+		
+		Double multiplicacion = aux1 * aux2;
+		String aux3 = String.valueOf(multiplicacion);
+		return aux3;
 	}
 
 	public Double getDivision(String valor1 , String valor2){
@@ -91,16 +108,6 @@ public class Calculo{
 
 		return  Math.pow(aux1, 1/aux2);
 	}
-
-	/*public static void main(String[] args){
-		Calculo calculo = new Calculo();
-		System.out.println("suma:" + calculo.getSuma("3","4"));
-		System.out.println("resta:" + calculo.getResta("3","4"));
-		System.out.println("Multiplicacion:" + calculo.getMultiplicacion("3","4"));
-		System.out.println("division:" + calculo.getDivision("30","4"));
-		System.out.println("potencia:" + calculo.getPotencia("3","4"));
-		System.out.println("raiz:" + calculo.getRaiz("81","2"));
-	}*/
 
 }
 
