@@ -16,4 +16,4 @@
   - sublime text
 
 ## Interfaz
-![calculadora](https://user-images.githubusercontent.com/24881247/37936133-c4eb2e04-312a-11e8-9c2b-671ca1f752b0.png)
+![calculadorav2](https://user-images.githubusercontent.com/24881247/39106314-3abd70ee-4691-11e8-942e-e185dbeffc09.png)

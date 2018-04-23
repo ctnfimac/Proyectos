@@ -1,8 +1,8 @@
 package Interfaz.Calculadora;
 
+import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
 import Interfaz.Componentes.Pantalla;
 import Interfaz.Componentes.Teclado;
 
@@ -29,7 +29,6 @@ class LaminaCalculadora extends JPanel{
 		pantallaSuperior = new Pantalla(true,30,0);
 		pantallaInferior = new Pantalla(false,60,29);
 		Teclado teclado = new Teclado(pantallaSuperior,pantallaInferior);
-
 		add(pantallaSuperior);
 		add(pantallaInferior);
 		add(teclado);

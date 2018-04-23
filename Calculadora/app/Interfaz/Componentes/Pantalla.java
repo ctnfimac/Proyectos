@@ -8,16 +8,17 @@ public class Pantalla extends JPanel{
 
 	public Pantalla(Boolean editable, int height, int posY){
 		setLayout(null);
-		//setSize(400,60);
 		setBounds(0,posY,400,height);
 
 		pantalla = new JTextField(4);
 		pantalla.setEditable(editable);
 		pantalla.setBounds(0,0,400,height);
 		pantalla.setText("");
+		pantalla.setFont(new Font("Arial", Font.PLAIN, 18));
+		pantalla.setBorder(null);
 		if(editable == false){
 			pantalla.setHorizontalAlignment(JTextField.RIGHT);
-			pantalla.setFont(new Font("Agency FB", Font.BOLD, 32));
+			pantalla.setFont(new Font("Arial", Font.PLAIN, 38));
 			this.setPantalla("0");
 		}
 		add(pantalla);
