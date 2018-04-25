@@ -5,18 +5,20 @@ import java.awt.Font;
 
 public class Pantalla extends JPanel{
 	private JTextField pantalla;
+	private boolean editable;
 
 	public Pantalla(Boolean editable, int height, int posY){
 		setLayout(null);
 		setBounds(0,posY,400,height);
 
+		this.editable = editable;	
 		pantalla = new JTextField(4);
 		pantalla.setEditable(editable);
 		pantalla.setBounds(0,0,400,height);
 		pantalla.setText("");
 		pantalla.setFont(new Font("Arial", Font.PLAIN, 18));
 		pantalla.setBorder(null);
-		if(editable == false){
+		if(this.editable == false){
 			pantalla.setHorizontalAlignment(JTextField.RIGHT);
 			pantalla.setFont(new Font("Arial", Font.PLAIN, 38));
 			this.setPantalla("0");
@@ -25,12 +27,18 @@ public class Pantalla extends JPanel{
 	}
 
 	public void setPantalla(String cadena){
-		this.pantalla.setText(getPantalla()+cadena);
+		//System.out.println("cadena = "+ cadena);
+		if(getEditable()){
+			if(cadena == "" ){
+				this.pantalla.setText("");
+			}else this.pantalla.setText(getPantalla()+cadena);
+		}else{
+			this.pantalla.setText(cadena);
+		}
 	}
 
 	public String getPantalla(){
-		String valor = "0";
-		valor =  this.pantalla.getText();
+		String valor =  this.pantalla.getText();
 		return valor;
 	}
 
@@ -47,5 +55,9 @@ public class Pantalla extends JPanel{
 			this.clearPantalla();
 			this.pantalla.setText(palabraNueva);
 		}
+	}
+
+	public boolean getEditable(){
+		return this.editable;
 	}
 }

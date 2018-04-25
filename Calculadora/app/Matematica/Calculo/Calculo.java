@@ -8,6 +8,7 @@ public class Calculo{
 	public final int RESTA = 2;
 	public final int MULTIPLICACION = 3;
 	public final int DIVISION = 4;
+	public final int POTENCIA = 5;
 	//private List lista;
 	private Integer operacion;
 	private String buffer = "0";
@@ -15,6 +16,7 @@ public class Calculo{
 	private boolean primerResta = true;
 	private boolean primerMultiplicacion = true;
 	private boolean primerDivision = true;
+	private boolean primerPotencia = true;
 
 	public Calculo(){
 		//lista = new List();
@@ -32,6 +34,8 @@ public class Calculo{
 				primerResta = true;
 				primerMultiplicacion = true;
 				primerDivision = true;
+				primerMultiplicacion = true;
+				primerPotencia = true;
 				break;
 			case SUMA:
 			    if(valor.equals("") == true) valor = "0";
@@ -48,6 +52,11 @@ public class Calculo{
 			case DIVISION:
 				if(valor.equals("") == true) valor = "0";
 				buffer = getDivision(buffer , valor);
+				break;
+			case POTENCIA:
+				if(valor.equals("") == true) valor = "1";
+				System.out.println("\nvalor = " + valor + "\nbuffer = " + buffer);
+				buffer = getPotencia(buffer , valor);
 				break;
 			default: 
 				break;
@@ -109,12 +118,23 @@ public class Calculo{
 		return resultado;
 	}
 
-	/*
-	public Double getPotencia(String base , String exponente){
+	
+	public String getPotencia( String base , String exponente){
 		Double aux1 = Double.parseDouble(base);
 		Integer aux2 = Integer.valueOf(exponente);
+		String resultado;
 
-		return  Math.pow(aux1, aux2);
+		System.out.println("aux1 = " + aux1 + "\naux2 = " + aux2);
+
+		if(primerPotencia == true){
+			primerPotencia = false;
+			aux1 = aux2 * 1.0;
+			aux2 = 1;
+		}
+		double potencia = Math.pow(aux1, aux2);
+		System.out.println("resultado " + potencia);
+		resultado = String.valueOf(potencia);
+		return  resultado;
 	}
 
 
