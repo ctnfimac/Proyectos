@@ -13,6 +13,7 @@ public class Teclado extends JPanel{
 	public final int MULTIPLICACION = 3;
 	public final int DIVISION = 4;
 	public final int POTENCIA = 5;
+	public final int RAIZ = 6;
 
 	private static int N_FILA = 4;
 	private static int N_COLUMNA = 5;
@@ -33,7 +34,7 @@ public class Teclado extends JPanel{
 	private String[][] matrizDeLetras = {{"7","8","9","DEL","AC"},
 										 {"4","5","6","x","/"},
 										 {"1","2","3","+","-"},
-										 {"0",".","sqrt","^","="}};
+										 {"0",".","\u221A","^","="}};
 
 	private GridLayout matrizDeBotones ;
 	private Pantalla pantallaSuperior;
@@ -78,7 +79,7 @@ public class Teclado extends JPanel{
 			button.setBackground(new Color(34,139,34));
 			button.setBorderPainted(false);
 		}
-		else if(letra == "+" || letra == "-" || letra == "x" || letra == "/" || letra == "sqrt" || 
+		else if(letra == "+" || letra == "-" || letra == "x" || letra == "/" || letra == "\u221A" || 
 		        letra == "^" || letra == "DEL" || letra == "AC"){
 			button.setBackground(new Color(220,220,220));
 			button.setForeground(new Color(70,130,180));
@@ -88,8 +89,8 @@ public class Teclado extends JPanel{
 			button.setForeground(new Color(44,44,44));
 		}
 		
-		if(letra == "sqrt"|| letra == "DEL" || letra == "AC"){
-			button.setFont(new Font("Sans-serif", Font.PLAIN, 20));
+		button.setFont(new Font("Sans-serif", Font.PLAIN, 20));
+			if(letra == "r"|| letra == "DEL" || letra == "AC"){
 		}
 	}
 
@@ -102,6 +103,7 @@ public class Teclado extends JPanel{
 		else if(teclaPresionada.equals("x"))   this.controlMultiplicacion(teclaPresionada);
 		else if(teclaPresionada.equals("/"))   this.controlDivision(teclaPresionada);
 		else if(teclaPresionada.equals("^"))   this.controlPotencia(teclaPresionada);
+		else if(teclaPresionada.equals("\u221A"))  this.controlRaiz(teclaPresionada);
 		else this.controlNumerico(teclaPresionada);
 	}
 	
@@ -150,13 +152,25 @@ public class Teclado extends JPanel{
 							resultadoL =(long) Math.pow(Double.parseDouble(valor1), Double.parseDouble(valor2)) ;
 							break;
 						case DIVISION:
-						resultadoL = Long.parseLong(valor1) / Long.parseLong(valor2);
+							resultadoL = Long.parseLong(valor1) / Long.parseLong(valor2);
+							break;
+						case RAIZ:
+							double raiz = Double.parseDouble(valor1);
+							double prueba = 0;
+							boolean flag = false;
+							long i;
+							for( i = 0 ; prueba < Double.parseDouble(valor2); i++){
+								prueba = Math.pow(i, raiz);
+								if(prueba == Double.parseDouble(valor2)) flag = true;
+							}
+							if(flag) resultadoL = i - 1;
+							else resultadoL = 999999999999999999L;
 							break;
 						default:
 							break;
 					}
 					
-					if(resultadoL > 999999999999999999L){
+					if(resultadoL > 999999999999999998L){
 						pantallaInferior.setPantalla("Math Error!");
 					}else {
 						pantallaInferior.setPantalla(String.valueOf(resultadoL));
@@ -180,7 +194,6 @@ public class Teclado extends JPanel{
 			 operacion = RESET;
 			 flagListoParaOperar = 0;
 			 valor1 = valor2 = "";
-
 	}
 
 	private void controlDEL(){
@@ -229,6 +242,18 @@ public class Teclado extends JPanel{
 	private void controlPotencia(String teclaPresionada){
 		if(flagListoParaOperar == 0){
 			operacion = POTENCIA;
+			valor1 = pantallaSuperior.getPantalla();
+			valor1Length = valor1.length();
+			pantallaSuperior.setPantalla(teclaPresionada);
+			flagListoParaOperar = 1;
+		}else{
+			System.out.println("tiene que ingresar un número antes");
+		}
+	}
+
+	private void controlRaiz(String teclaPresionada){
+		if(flagListoParaOperar == 0){
+			operacion = RAIZ;
 			valor1 = pantallaSuperior.getPantalla();
 			valor1Length = valor1.length();
 			pantallaSuperior.setPantalla(teclaPresionada);

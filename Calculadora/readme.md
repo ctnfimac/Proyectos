@@ -1,6 +1,6 @@
 ## Calculadora
 
-![calculadorav2](https://user-images.githubusercontent.com/24881247/39106314-3abd70ee-4691-11e8-942e-e185dbeffc09.png)
+![calculadorav3](https://user-images.githubusercontent.com/24881247/39286505-b9545a98-48f4-11e8-8beb-b571ea1e1f26.png)
 ### Funcionalidades actuales
 	
   - Sumar
@@ -9,10 +9,11 @@
   - Dividir
   - Potencia
   - Limpiar pantalla
+  - Raiz
   
 ### Funcionalidades pendientes
   - Borrar digitos
-  - Raiz
+  
 
 ### Editor utilizado
  
