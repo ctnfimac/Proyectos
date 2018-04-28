@@ -10,11 +10,10 @@
   - Potencia
   - Limpiar pantalla
   - Raiz
-  
-### Funcionalidades pendientes
   - Borrar digitos
   
-
+### Funcionalidades pendientes
+  
 ### Editor utilizado
  
   - sublime text
