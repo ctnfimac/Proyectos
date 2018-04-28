@@ -68,11 +68,9 @@ public class Teclado extends JPanel{
 		}
 		add(lamina);
 	}
-
-	
 	 
 	/**
-	 * le doy estilos al boton
+	 * le doy estilos al boton 
 	 */
 	private void setEstilosDelBoton(JButton button, String letra){
 		if(letra == "="){
@@ -87,6 +85,7 @@ public class Teclado extends JPanel{
 		}else{
 			button.setBackground(new Color(230,230,250));
 			button.setForeground(new Color(44,44,44));
+			if( letra == ".")	button.setEnabled(false); // deshabilito el boton punto (.)
 		}
 		
 		button.setFont(new Font("Sans-serif", Font.PLAIN, 20));
@@ -107,7 +106,9 @@ public class Teclado extends JPanel{
 		else this.controlNumerico(teclaPresionada);
 	}
 	
-	
+	/**
+	 * Método para controlar la funcionalidad del teclado numérico
+	 */
 	private void controlNumerico(String teclaPresionada){
 		if(flagListoParaOperar == 2){
 			pantallaSuperior.setPantalla("");
@@ -186,7 +187,9 @@ public class Teclado extends JPanel{
 	
 
 	
-
+	/**
+	 * Resetea las dos pantallas, valor1, valor2 y la operacion
+	 */
 	private void controlAC(){
 			 pantallaSuperior.clearPantalla();
 			 pantallaInferior.clearPantalla();
@@ -196,8 +199,19 @@ public class Teclado extends JPanel{
 			 valor1 = valor2 = "";
 	}
 
+	/**
+	 * Elimina un digito de la pantalla superior,y tambien en los valor1 y valor2
+	 */
 	private void controlDEL(){
 			pantallaSuperior.eliminaCaracter();
+			if( flagListoParaOperar == 1){
+				if( valor2.length()!= 0) 
+					valor2 = valor2.substring(0 , valor2.length()-1); // elimina el ultimo digito de valor2
+				else flagListoParaOperar = 0;  
+			}else if( flagListoParaOperar == 0 ){
+				if( valor1.length()!= 0)
+					valor1= valor1.substring(0 , valor1.length()-1); // elimina el ultimo digito de valor1
+			}
 	}
 
 	
