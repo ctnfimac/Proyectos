@@ -1,0 +1,16 @@
+{
+  "name": "flexbox",
+  "version": "1.0.0",
+  "description": "App para las diferentes propiedades de Flexbox",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "@ChristianPeralta",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-pug": "^4.0.1",
+    "gulp-sass": "^4.0.1"
+  }
+}
