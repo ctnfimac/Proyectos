@@ -1,5 +1,7 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var uglify = require('gulp-uglify');
+var pump = require('pump');
 var pug = require('gulp-pug');
 var browserSync = require('browser-sync').create();
 
@@ -16,8 +18,20 @@ gulp.task('serve', ['sass'], function() {
 		// el navegador
 		gulp.watch("public/css/main.css").on('change', browserSync.reload);
 		gulp.watch("public/index.html").on('change', browserSync.reload);
+		gulp.watch("dev/js/*.js",["comprimir"]);// cuando detecta un cambio en la ruta llama a la tarea comprimir
+		gulp.watch("public/js/*.js").on('change', browserSync.reload); // cuando detecta cambio en algun .js de public regresca el navegador
 	});
 
+
+gulp.task('comprimir', function (cb) {
+	pump([
+			gulp.src('dev/js/*.js'),
+			uglify(),
+			gulp.dest('public/js')
+		],
+		cb
+	);
+});
 
 gulp.task('sass', function(){
 	return gulp.src('dev/scss/*.scss')
