@@ -1,11 +1,123 @@
-body{
-	font-family: Sans-Serif;
+*,*::before,*::after{
+	margin: 0;
+	padding: 0;
+	box-sizing: content-box;
+	box-sizing: border-box;
 }
 
-h2{
-	color: tomato;
+body{
+	font-family: Sans-Serif;
+	background: #ccc;
+	font-size: 100%;
 }
 
 h1{
-	color: purple;
+	color: steelblue;
+	text-align: center;
+	font-size: 2em;
+	padding: 40px;
+	background-color: #fff;
 }
+
+.container{
+	width: 95%;
+	max-width: 1366px;
+	margin-left: auto;
+	margin-right: auto;
+	//background-color: tomato;
+	@media screen and (min-width:1366px){
+		display: flex;
+		justify-content:space-between;
+	}
+}
+
+.flexDemo-item{
+	//background-color: gray;
+	display: flex;
+	flex-wrap: wrap;
+	color: #eee;
+	width: 100%;
+	max-width: 683px;
+	margin-left: auto;
+	margin-right: auto;
+	@media screen and (min-width:780px){
+		height: 362px;
+	}
+}
+
+.flex__menu{
+	width: 100%;
+	background-color: #2d2d2d;
+	padding-bottom: 20px;
+	@media screen and (min-width:780px){
+		width: 37%;
+		height: 362px;
+	}
+	&--titulo{
+		padding: 5px;
+		color:#FF7262;
+		margin-top: 10px;
+		font-size: .8em;
+		margin-bottom: 30px;
+		margin-left: 15px;
+		text-align: center;
+		@media screen and (min-width:780px){
+			margin-bottom: 50px;
+			font-size: 1em;
+		}
+	}
+	&--item{
+		width: 155px;
+		margin-left: auto;
+		margin-right: auto;
+		//background-color: gray;
+		margin-top: 20px;
+		text-align: right;
+		font-size: 1.2em;
+		@media screen and (min-width:780px){
+			width: 165px;
+			font-size: 1.3em;
+			margin-top: 28px;
+		}
+		input{
+			padding-top: 10px;
+		}
+	}
+}
+
+.flex__vista{
+	width: 100%;
+	height: 250px;
+	background-color: #eee;
+	display: flex;
+	justify-content:space-around;
+	//flex-wrap: nowrap;
+	align-items: center;
+	@media screen and (min-width:780px){
+		width: 63%;
+		height: 362px;
+	}
+	&-box{
+		width: 35px;
+		height: 35px;
+		background-color: #7c2ce2;
+		text-align: center;
+		padding-top: 8px;
+		color: #fff;
+		@media screen and (min-width:480px){
+			width: 50px;
+			height: 50px;
+			padding-top: 16px;
+		}
+		@media screen and (min-width:480px){
+			width: 60px;
+			height: 60px;
+			padding-top: 22px;
+		}
+	}
+}
+
+
+
+
+

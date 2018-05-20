@@ -4,12 +4,102 @@ html(lang="es")
 		meta(charset="UTF-8")
 		meta(name="viewport", content="width=device-width, initial-scale=1.0")
 		meta(http-equiv="X-UA-Compatible", content="ie=edge")
-		title Flexbox
+		title Flexbox atributos
 		link(rel="stylesheet", href="css/main.css")
-		script(src="js/main.js")
+		script(src="js/mains.js")
 	body
-		h1 Propiedades flexBox
-		h2 Aca mostraremos hola
-		p practicar las listas con pug
-		   
+		h1 Propiedades de Flex
+	
+		-var list = ["row", "row-reverse", "column","column-reverse"]
+		-var boxs = [1,2,3,4,5,6]
+		-var flag = true;
+
+		section.flexDemo
+			.container
+				.flexDemo-item
+					.flex__menu
+						.flex__menu--titulo
+							h2 FLEX-DIRECTION
+						each item in list
+							.flex__menu--item
+								label #{item}
+								if flag
+									input(type="radio", name="flex-direction" value="#{item}" checked)
+									-flag = false;
+								else
+									input(type="radio", name="flex-direction" value="#{item}")
+					.flex__vista
+						each box in boxs
+							.flex__vista-box #{box}
+
+				.flexDemo-item
+					.flex__menu
+						.flex__menu--titulo
+							h2 FLEX-DIRECTION
+						each item in list
+							.flex__menu--item
+								label #{item}
+								if flag
+									input(type="radio", name="flex-direction" value="#{item}" checked)
+									-flag = false;
+								else
+									input(type="radio", name="flex-direction" value="#{item}")
+					.flex__vista
+						each box in boxs
+							.flex__vista-box #{box}
+
+		//- section.flexDemo
+		//- 	.container
+		//- 		.flexDemo-item
+		//- 			.flex__menu
+		//- 				.flex__menu--titulo
+		//- 					h2 FLEX-DIRECTION
+		//- 				.flex__menu--item
+		//- 					label row
+		//- 					input(type="radio", name="flex-direction", value="row")
+		//- 				.flex__menu--item
+		//- 					label row-reverse
+		//- 					input(type="radio", name="flex-direction", value="row-reverse")
+		//- 				.flex__menu--item
+		//- 					label column
+		//- 					input(type="radio", name="flex-direction", value="column")
+		//- 				.flex__menu--item
+		//- 					label column-reverse
+		//- 					input(type="radio", name="flex-direction", value="column-reverse")
+		//- 			.flex__vista
+		//- 				.box 1
+		//- 				.box 2
+		//- 				.box 3
+		//- 				.box 4
+		//- 				.box 5
+		//- 				.box 6
+
 		
+		//- each item in list
+		//- 	.flex__menu--item
+		//- 		label #{item}
+		//- 		input(type="radio", name="flex-direction" value="#{item}")
+		
+		//- .flex__vista
+		//- each box in boxs
+		//- 	.box #{box}
+			
+
+
+		
+
+//- In the lower right-hand corner of Sublime Text, there should be a label that 
+//- says Spaces: N or Tab Size: N where N is a number. Select this and you'll 
+//- see options to convert the entire document's indentation to use either tabs 
+//- or spaces:
+
+//-     Convert Indentation to Spaces
+//-     Convert Indentation to Tabs
+
+
+	
+	  
+		
+
+		
+			

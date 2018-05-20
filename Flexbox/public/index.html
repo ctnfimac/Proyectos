@@ -4,13 +4,77 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>Flexbox</title>
+    <title>Flexbox atributos</title>
     <link rel="stylesheet" href="css/main.css"/>
-    <script src="js/main.js"></script>
+    <script src="js/mains.js"></script>
   </head>
   <body>
-    <h1>Propiedades flexBox</h1>
-    <h2>Aca mostraremos hola</h2>
-    <p>practicar las listas con pug</p>
+    <h1>Propiedades de Flex</h1>
+    <section class="flexDemo">
+      <div class="container">
+        <div class="flexDemo-item">
+          <div class="flex__menu">
+            <div class="flex__menu--titulo">
+              <h2>FLEX-DIRECTION</h2>
+            </div>
+            <div class="flex__menu--item">
+              <label>row</label>
+              <input type="radio" name="flex-direction" value="#{item}" checked="checked"/>
+            </div>
+            <div class="flex__menu--item">
+              <label>row-reverse</label>
+              <input type="radio" name="flex-direction" value="#{item}"/>
+            </div>
+            <div class="flex__menu--item">
+              <label>column</label>
+              <input type="radio" name="flex-direction" value="#{item}"/>
+            </div>
+            <div class="flex__menu--item">
+              <label>column-reverse</label>
+              <input type="radio" name="flex-direction" value="#{item}"/>
+            </div>
+          </div>
+          <div class="flex__vista">
+            <div class="flex__vista-box">1</div>
+            <div class="flex__vista-box">2</div>
+            <div class="flex__vista-box">3</div>
+            <div class="flex__vista-box">4</div>
+            <div class="flex__vista-box">5</div>
+            <div class="flex__vista-box">6</div>
+          </div>
+        </div>
+        <div class="flexDemo-item">
+          <div class="flex__menu">
+            <div class="flex__menu--titulo">
+              <h2>FLEX-DIRECTION</h2>
+            </div>
+            <div class="flex__menu--item">
+              <label>row</label>
+              <input type="radio" name="flex-direction" value="#{item}"/>
+            </div>
+            <div class="flex__menu--item">
+              <label>row-reverse</label>
+              <input type="radio" name="flex-direction" value="#{item}"/>
+            </div>
+            <div class="flex__menu--item">
+              <label>column</label>
+              <input type="radio" name="flex-direction" value="#{item}"/>
+            </div>
+            <div class="flex__menu--item">
+              <label>column-reverse</label>
+              <input type="radio" name="flex-direction" value="#{item}"/>
+            </div>
+          </div>
+          <div class="flex__vista">
+            <div class="flex__vista-box">1</div>
+            <div class="flex__vista-box">2</div>
+            <div class="flex__vista-box">3</div>
+            <div class="flex__vista-box">4</div>
+            <div class="flex__vista-box">5</div>
+            <div class="flex__vista-box">6</div>
+          </div>
+        </div>
+      </div>
+    </section>
   </body>
 </html>
