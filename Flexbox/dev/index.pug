@@ -10,9 +10,15 @@ html(lang="es")
 	body
 		h1 Propiedades de Flex
 	
-		-var list = ["row", "row-reverse", "column","column-reverse"]
+		-var listDirection = ["row", "row-reverse", "column","column-reverse"]
+		-var listWrap = ["nowrap","wrap","wrap-reverse"]
+		-var listContent = ["flex-start","flex-end","center","space-between","space-around","space-everly"]
+		-var listAlign = ["flex-start","flex-end","center","stretch","baseline"]
 		-var boxs = [1,2,3,4,5,6]
-		-var flag = true;
+		-var flag = true
+		-var flag2 = true
+		-var flag3 = true
+		-var flag4 = true
 
 		section.flexDemo
 			.container
@@ -20,14 +26,14 @@ html(lang="es")
 					.flex__menu
 						.flex__menu--titulo
 							h2 FLEX-DIRECTION
-						each item in list
+						each item in listDirection
 							.flex__menu--item
-								label #{item}
+								label(for=''+item) #{item}
 								if flag
-									input(type="radio", name="flex-direction" value="#{item}" checked)
+									input(type="radio", id=""+item name="flex-direction" value=""+item checked)
 									-flag = false;
 								else
-									input(type="radio", name="flex-direction" value="#{item}")
+									input(type="radio", id=""+item name="flex-direction" value=""+item)
 					.flex__vista
 						each box in boxs
 							.flex__vista-box #{box}
@@ -35,15 +41,47 @@ html(lang="es")
 				.flexDemo-item
 					.flex__menu
 						.flex__menu--titulo
-							h2 FLEX-DIRECTION
-						each item in list
+							h2 FLEX-WRAP
+						each item in listWrap
 							.flex__menu--item
-								label #{item}
-								if flag
-									input(type="radio", name="flex-direction" value="#{item}" checked)
-									-flag = false;
+								label(for=''+item) #{item}
+								if flag2
+									input(type="radio", id=""+item  name="flex-wrap" value=""+item checked)
+									-flag2 = false;
 								else
-									input(type="radio", name="flex-direction" value="#{item}")
+									input(type="radio", id=""+item name="flex-wrap" value=""+item)
+					.flex__vista
+						each box in boxs
+							.flex__vista-box #{box}
+
+				.flexDemo-item
+					.flex__menu
+						.flex__menu--titulo
+							h2 FLEX-CONTENT
+						each item in listContent
+							.flex__menu--item
+								label(for=''+item) #{item}
+								if flag3
+									input(type="radio", name="flex-content" value=""+item checked)
+									-flag3 = false;
+								else
+									input(type="radio", name="flex-content" value=""+item)
+					.flex__vista
+						each box in boxs
+							.flex__vista-box #{box}
+				
+				.flexDemo-item
+					.flex__menu
+						.flex__menu--titulo
+							h2 FLEX-AlIGN
+						each item in listAlign
+							.flex__menu--item
+								label(for=''+item) #{item}
+								if flag4
+									input(type="radio", id=""+item  name="flex-align" value=""+item checked)
+									-flag4 = false;
+								else
+									input(type="radio", id=""+item name="flex-align" value=""+item)
 					.flex__vista
 						each box in boxs
 							.flex__vista-box #{box}
@@ -56,7 +94,7 @@ html(lang="es")
 		//- 					h2 FLEX-DIRECTION
 		//- 				.flex__menu--item
 		//- 					label row
-		//- 					input(type="radio", name="flex-direction", value="row")
+		//- 					input(type="radio", name="flex-wrap", value="row")
 		//- 				.flex__menu--item
 		//- 					label row-reverse
 		//- 					input(type="radio", name="flex-direction", value="row-reverse")
