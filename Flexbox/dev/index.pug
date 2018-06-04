@@ -6,7 +6,6 @@ html(lang="es")
 		meta(http-equiv="X-UA-Compatible", content="ie=edge")
 		title Flexbox atributos
 		link(rel="stylesheet", href="css/main.css")
-		script(src="js/mains.js")
 	body
 		h1 Propiedades de Flex
 	
@@ -34,7 +33,7 @@ html(lang="es")
 									-flag = false;
 								else
 									input(type="radio", id=""+item name="flex-direction" value=""+item)
-					.flex__vista
+					.flex__vista#vista--flex-direction
 						each box in boxs
 							.flex__vista-box #{box}
 
@@ -85,6 +84,8 @@ html(lang="es")
 					.flex__vista
 						each box in boxs
 							.flex__vista-box #{box}
+
+		script(src="js/main.js")
 
 		//- section.flexDemo
 		//- 	.container

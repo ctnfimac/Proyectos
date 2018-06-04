@@ -12,30 +12,47 @@
 })();
 
 
-		//-  var opcionesFlexDirection = ['row','row-reverse','column','column-reverse'] 
-		
-		//- each aux in opcionesFlexDirection	
-		//- label #{aux}
-		//- input(type="radio", name="flexDirection" value=`${aux}`)
+(function(){
+	var vector = ['row','row-reverse','column','column-reverse'];
+	for(i = 0 ; i < vector.length ; i++ ){
+		//console.log(vector[i]);
+		document.getElementById(""+vector[i]).addEventListener('click',mifuncion);
+	}		
+})();
 
-		//- section.flexbox
-		//- 	.container
-		//- 		h2.opciones--titulo FLEX-DIRECTION
-		//- 		.flex__opciones
-		//- 			.flex__opciones--item
-		//- 				label rows
-		//- 				input(type="radio", name="flexDirection" value="row")
-		//- 			.flex__opciones--item
-		//- 				label row-reverse
-		//- 				input(type="radio", name="flexDirection" value="row-reverse")
-		//- 			.flex__opciones--item
-		//- 				label column
-		//- 				input(type="radio", name="flexDirection" value="column")
-		//- 			.flex__opciones--item
-		//- 				label column-reverse
-		//- 				input(type="radio", name="flexDirection" value="column-reverse")
-				
-		//- 		 .flex__salida
-				//- 	each box in [1, 2, 3, 4, 5, 6, 7]
-				//- 		div.box #{box}
-					
+
+function mifuncion(){
+	// console.log(document.getElementById('row').checked);
+	// console.log(document.getElementById('row-reverse').checked);
+	// console.log(document.getElementById('column').checked);
+	// console.log(document.getElementById('column-reverse').checked);
+
+	if(document.getElementById('row').checked) 
+		verifica('row');
+	else if(document.getElementById('row-reverse').checked) 
+		verifica('row-reverse');
+	if(document.getElementById('column').checked) 
+		verifica('column');
+	else if(document.getElementById('column-reverse').checked) 
+		verifica('column-reverse');
+}
+
+function verifica(estado){
+	switch(estado){
+		case 'row':
+			document.getElementById('vista--flex-direction').style.flexDirection = 'row';
+			break;
+		case 'row-reverse':
+			document.getElementById('vista--flex-direction').style.flexDirection = 'row-reverse';
+			break;
+		case 'column':
+			document.getElementById('vista--flex-direction').style.flexDirection = 'column';
+			break;
+		case 'column-reverse':
+			document.getElementById('vista--flex-direction').style.flexDirection = 'column-reverse';
+			break;
+		default:
+			console.log('Error! flex-direction opcion incorrecta');
+			break;
+	}
+}

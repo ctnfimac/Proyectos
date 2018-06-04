@@ -7,16 +7,36 @@
 
 body{
 	font-family: Sans-Serif;
-	background: #ccc;
+	background: #000;
 	font-size: 100%;
 }
 
 h1{
-	color: steelblue;
+	color: tan;
 	text-align: center;
 	font-size: 2em;
 	padding: 40px;
-	background-color: #fff;
+	display: flex;
+	justify-content: center;
+	align-items:center;
+	font-size:1em;
+	@media screen and (min-width:480px){
+		font-size: 1.6em;
+	}
+	&::before,&::after{
+		content: '';
+		background-color:tan;
+		width: 20px;
+		height: 3px;
+		display: block;
+		margin-right:10px;
+		@media screen and (min-width:480px){
+			width: 30px;
+		}
+	}
+	&::after{
+		margin-left:10px;
+	}
 }
 
 .container{
@@ -32,6 +52,7 @@ h1{
 		display: flex;
 		justify-content: center;
 		flex-wrap: wrap;
+		width: 98%;
 	}
 }
 
@@ -44,7 +65,7 @@ h1{
 	max-width: 634px;
 	margin-left: auto;
 	margin-right: auto;
-	margin-bottom: 15px;
+	margin-bottom: 35px;
 	@media screen and (min-width:780px){
 		height: 362px;
 		//width: 50%;
@@ -97,7 +118,7 @@ h1{
 	background-color: #eee;
 	display: flex;
 	justify-content:space-around;
-	//flex-wrap: nowrap;
+	flex-wrap: wrap;
 	align-items: center;
 	@media screen and (min-width:780px){
 		width: 63%;
@@ -106,19 +127,21 @@ h1{
 	&-box{
 		width: 35px;
 		height: 35px;
+		border: 1px solid steelblue;
 		background-color: #7c2ce2;
 		text-align: center;
 		padding-top: 8px;
 		color: #fff;
-		@media screen and (min-width:480px){
-			width: 50px;
-			height: 50px;
-			padding-top: 16px;
-		}
+		// @media screen and (min-width:480px){
+		// 	width: 50px;
+		// 	height: 50px;
+		// 	padding-top: 16px;
+		// }
 		@media screen and (min-width:480px){
 			width: 60px;
 			height: 60px;
-			padding-top: 22px;
+			padding-top: 17px;
+			font-size: 1.6em;
 		}
 	}
 }
