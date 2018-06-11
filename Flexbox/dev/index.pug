@@ -11,8 +11,8 @@ html(lang="es")
 	
 		-var listDirection = ["row", "row-reverse", "column","column-reverse"]
 		-var listWrap = ["nowrap","wrap","wrap-reverse"]
-		-var listContent = ["flex-start","flex-end","center","space-between","space-around","space-everly"]
-		-var listAlign = ["flex-start","flex-end","center","stretch","baseline"]
+		-var listContent = ["flex-start","flex-end","center","space-between","space-around","space-evenly"]
+		-var listAlignItems = ["_flex-start","_flex-end","_center","stretch","baseline"]
 		-var boxs = [1,2,3,4,5,6]
 		-var flag = true
 		-var flag2 = true
@@ -49,7 +49,7 @@ html(lang="es")
 									-flag2 = false;
 								else
 									input(type="radio", id=""+item name="flex-wrap" value=""+item)
-					.flex__vista
+					.flex__vista#vista--flex-wrap
 						each box in boxs
 							.flex__vista-box #{box}
 
@@ -61,19 +61,19 @@ html(lang="es")
 							.flex__menu--item
 								label(for=''+item) #{item}
 								if flag3
-									input(type="radio", name="flex-content" value=""+item checked)
+									input(type="radio",id=""+item name="flex-content" value=""+item checked)
 									-flag3 = false;
 								else
-									input(type="radio", name="flex-content" value=""+item)
-					.flex__vista
+									input(type="radio",id=""+item name="flex-content" value=""+item)
+					.flex__vista#vista--flex-content
 						each box in boxs
 							.flex__vista-box #{box}
 				
 				.flexDemo-item
 					.flex__menu
 						.flex__menu--titulo
-							h2 FLEX-AlIGN
-						each item in listAlign
+							h2 FLEX-AlIGN-ITEMS
+						each item in listAlignItems
 							.flex__menu--item
 								label(for=''+item) #{item}
 								if flag4
@@ -81,7 +81,7 @@ html(lang="es")
 									-flag4 = false;
 								else
 									input(type="radio", id=""+item name="flex-align" value=""+item)
-					.flex__vista
+					.flex__vista#vista--flex-alignItems
 						each box in boxs
 							.flex__vista-box #{box}
 
