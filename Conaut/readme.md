@@ -11,7 +11,7 @@ El diseño de esta página fue realizada en una materia de la facultad llamada "
  - Sass
  - Browser-Sync
 
-[Ver página](http://www.fimac.com.ar/conaut/)
+[Ver página](http://christianperalta.com/conaut/)
 
 ### Diseño
 
